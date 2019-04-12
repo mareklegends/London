@@ -263,7 +263,7 @@ public class Dashboard extends javax.swing.JFrame {
 
     private void jButtonBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonBuscarMouseClicked
         
-        listModelFiesta.removeAllElements();
+        listModelGente.removeAllElements();
         
              
        for (int i = 0; i <  vContacto.size(); i++) {
