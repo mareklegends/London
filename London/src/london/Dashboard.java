@@ -247,7 +247,12 @@ public class Dashboard extends javax.swing.JFrame {
             }
          }
      
-        
+       listModelGente.removeAllElements();
+        for (int i = 0; i < vContacto.size(); i++) {
+            listModelGente.addElement(vContacto.get(i).toString());
+        }
+       
+       
         sdos=null;
     }//GEN-LAST:event_jButtonSalirMouseClicked
 
