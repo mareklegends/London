@@ -211,9 +211,10 @@ public class Dashboard extends javax.swing.JFrame {
        listModelGente.removeAllElements();
        
          for (int i = 0; i <  vVips.size(); i++) {
-            if (vVips.get(i).equalsIgnoreCase(s)){              
+            if (vVips.get(i).equalsIgnoreCase(s)){    
+                listModelFiesta.removeElement(vVips.get(i));
                vVips.remove(i);
-               listModelFiesta.removeElement(vVips.get(i));
+               
             }
          }
         
@@ -227,30 +228,27 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonEntrarMouseClicked
 
     private void jButtonSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonSalirMouseClicked
-         String s2 = (String) jListfiesta.getSelectedValue();
+         String sdos = (String) jListfiesta.getSelectedValue(); 
          
-           
-        
-      listModelFiesta.removeAllElements();
-      
-      
-       for (int i = 0; i <  vContacto.size(); i++) {
-            if (vContacto.get(i).getDni().equalsIgnoreCase(s2)){              
-               vContacto.remove(i);
-                listModelGente.removeElement(vContacto.get(i));
-            }
-         }
-        
-      
-      for (int i = 0; i <  vVips.size(); i++) {         
+         vVips.add(sdos);
+         
+           listModelFiesta.removeAllElements();
+         
+        for (int i = 0; i <  vVips.size(); i++) {         
           listModelFiesta.addElement(vVips.get(i).toString());           
         }
-      
-      
-      
-       
+           
+         
+       for (int i = 0; i <  vContacto.size(); i++) {
+            if (vContacto.get(i).getDni().equalsIgnoreCase(sdos)){
+                listModelGente.removeElement(vContacto.get(i));
+               vContacto.remove(i);
+                
+            }
+         }
+     
         
-        s2=null;
+        sdos=null;
     }//GEN-LAST:event_jButtonSalirMouseClicked
 
     /**
