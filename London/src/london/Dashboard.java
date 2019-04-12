@@ -13,11 +13,11 @@ public class Dashboard extends javax.swing.JFrame {
     /**
      * Creates new form Dashboard
      */
-    ArrayList<Contacto> vContacto= null;
+    ArrayList<Contacto> vContacto;
     ArrayList<String> vVips= null;
-      Contacto c = null;
-      DefaultListModel listModelFiesta = null;
-      DefaultListModel listModelGente = null;
+      Contacto c;
+      DefaultListModel listModelFiesta;
+      DefaultListModel listModelGente;
       
 
     @Override
@@ -206,39 +206,51 @@ public class Dashboard extends javax.swing.JFrame {
       
       
        
-        c = new Contacto(s);
-        vContacto.add(c);
+       c = new Contacto(s);
+       vContacto.add(c);
        listModelGente.removeAllElements();
+       
+         for (int i = 0; i <  vVips.size(); i++) {
+            if (vVips.get(i).equalsIgnoreCase(s)){              
+               vVips.remove(i);
+               listModelFiesta.removeElement(vVips.get(i));
+            }
+         }
         
         for (int i = 0; i < vContacto.size(); i++) {
             listModelGente.addElement(vContacto.get(i).toString());
         }
-        
-        for (int i = 0; i <  vVips.size(); i++) {
-            if (vVips.get(i).equals(s)) {
-                listModelFiesta.removeElement(vVips.get(i));
-            }
-        }
+       
         
         s=null;
       
     }//GEN-LAST:event_jButtonEntrarMouseClicked
 
     private void jButtonSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonSalirMouseClicked
-         String s = (String) jListfiesta.getSelectedValue();
+         String s2 = (String) jListfiesta.getSelectedValue();
          
-          c = new Contacto(s);
-        vContacto.add(c);
-      listModelGente.removeAllElements();
+           
+        
+      listModelFiesta.removeAllElements();
       
-       for (int i = 0; i < vContacto.size(); i++) {
-          if (vContacto.get(i).equals(s)) {
-                listModelFiesta.removeElement(vContacto.get(i));
+      
+       for (int i = 0; i <  vContacto.size(); i++) {
+            if (vContacto.get(i).getDni().equalsIgnoreCase(s2)){              
+               vContacto.remove(i);
+                listModelGente.removeElement(vContacto.get(i));
             }
+         }
+        
+      
+      for (int i = 0; i <  vVips.size(); i++) {         
+          listModelFiesta.addElement(vVips.get(i).toString());           
         }
+      
+      
+      
        
         
-        s=null;
+        s2=null;
     }//GEN-LAST:event_jButtonSalirMouseClicked
 
     /**
