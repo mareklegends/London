@@ -65,6 +65,7 @@ public class Dashboard extends javax.swing.JFrame {
         jLabelLondon = new javax.swing.JLabel();
         jLabelVipsTexto = new javax.swing.JLabel();
         jButtonEntrar = new javax.swing.JButton();
+        jButtonSalir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -100,12 +101,19 @@ public class Dashboard extends javax.swing.JFrame {
 
         jLabelLondon.setText("London");
 
-        jLabelVipsTexto.setText("Vips");
+        jLabelVipsTexto.setText("Gente");
 
-        jButtonEntrar.setText("Entrar Vips");
+        jButtonEntrar.setText("Entrar");
         jButtonEntrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButtonEntrarMouseClicked(evt);
+            }
+        });
+
+        jButtonSalir.setText("Salir");
+        jButtonSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonSalirMouseClicked(evt);
             }
         });
 
@@ -128,10 +136,12 @@ public class Dashboard extends javax.swing.JFrame {
                                     .addComponent(jTextFieldDNI)
                                     .addComponent(jLabelDNItexto)
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonEntrar))
+                                .addGap(35, 35, 35)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jButtonEntrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jButtonSalir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addComponent(jLabelVipsTexto))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jTextFieldBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -155,14 +165,14 @@ public class Dashboard extends javax.swing.JFrame {
                         .addComponent(jTextFieldDNI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(16, 16, 16)
                         .addComponent(jButtonNuevaPersona)
-                        .addGap(24, 24, 24)
-                        .addComponent(jLabelVipsTexto)
+                        .addGap(20, 20, 20)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelVipsTexto)
+                            .addComponent(jButtonEntrar))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jButtonEntrar)
-                                .addGap(52, 52, 52))))
+                            .addComponent(jButtonSalir)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -188,6 +198,7 @@ public class Dashboard extends javax.swing.JFrame {
         for (int i = 0; i < vContacto.size(); i++) {
             listModelGente.addElement(vContacto.get(i).toString());
         }
+        jTextFieldDNI.setText("");
     }//GEN-LAST:event_jButtonNuevaPersonaMouseClicked
 
     private void jButtonEntrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEntrarMouseClicked
@@ -203,15 +214,32 @@ public class Dashboard extends javax.swing.JFrame {
             listModelGente.addElement(vContacto.get(i).toString());
         }
         
-        for (int i = 0; i <  vContacto.size(); i++) {
-            if (vContacto.get(i).equals(s)) {
-                listModelFiesta.removeElement(vContacto.get(i));
+        for (int i = 0; i <  vVips.size(); i++) {
+            if (vVips.get(i).equals(s)) {
+                listModelFiesta.removeElement(vVips.get(i));
             }
         }
         
         s=null;
       
     }//GEN-LAST:event_jButtonEntrarMouseClicked
+
+    private void jButtonSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonSalirMouseClicked
+         String s = (String) jListfiesta.getSelectedValue();
+         
+          c = new Contacto(s);
+        vContacto.add(c);
+      listModelGente.removeAllElements();
+      
+       for (int i = 0; i < vContacto.size(); i++) {
+          if (vContacto.get(i).equals(s)) {
+                listModelFiesta.removeElement(vContacto.get(i));
+            }
+        }
+       
+        
+        s=null;
+    }//GEN-LAST:event_jButtonSalirMouseClicked
 
     /**
      * @param args the command line arguments
@@ -252,6 +280,7 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JButton jButtonBuscar;
     private javax.swing.JButton jButtonEntrar;
     private javax.swing.JButton jButtonNuevaPersona;
+    private javax.swing.JButton jButtonSalir;
     private javax.swing.JLabel jLabelDNItexto;
     private javax.swing.JLabel jLabelLondon;
     private javax.swing.JLabel jLabelVipsTexto;
