@@ -271,7 +271,7 @@ public class Dashboard extends javax.swing.JFrame {
                 
             }
          }
-        
+        jTextFieldBuscar.setText("");
     }//GEN-LAST:event_jButtonBuscarMouseClicked
 
     /**
