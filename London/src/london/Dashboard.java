@@ -98,6 +98,11 @@ public class Dashboard extends javax.swing.JFrame {
         jLabelDNItexto.setText("DNI");
 
         jButtonBuscar.setText("Buscar");
+        jButtonBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonBuscarMouseClicked(evt);
+            }
+        });
 
         jLabelLondon.setText("London");
 
@@ -255,6 +260,20 @@ public class Dashboard extends javax.swing.JFrame {
        
         sdos=null;
     }//GEN-LAST:event_jButtonSalirMouseClicked
+
+    private void jButtonBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonBuscarMouseClicked
+        
+        listModelFiesta.removeAllElements();
+        
+             
+       for (int i = 0; i <  vContacto.size(); i++) {
+            if (vContacto.get(i).getDni().equalsIgnoreCase(jTextFieldBuscar.getText())){
+                listModelGente.addElement(vContacto.get(i));
+                
+            }
+         }
+        
+    }//GEN-LAST:event_jButtonBuscarMouseClicked
 
     /**
      * @param args the command line arguments
